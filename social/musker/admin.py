@@ -8,12 +8,18 @@ admin.site.unregister(Group)
 admin.site.unregister(User)
 
 
+class ProfileInLine(admin.StackedInline):
+    model = Profile
+
 
 class UserAdmin(admin.ModelAdmin):
     model = User
     fields = ["username"]
+    inlines = [ProfileInLine]
     
 
 # Register
 admin.site.register(User, UserAdmin)
-admin.site.register(Profile)
+#admin.site.register(Profile)
+
+
