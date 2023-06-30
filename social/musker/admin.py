@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
+from .models import Profile
 
 
 # Unregistering gropus and user in Admin section
@@ -13,4 +14,6 @@ class UserAdmin(admin.ModelAdmin):
     fields = ["username"]
     
 
+# Register
 admin.site.register(User, UserAdmin)
+admin.site.register(Profile)
