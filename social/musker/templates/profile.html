@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | {{ user.username }} {% endblock title %}
+
+{% block content %}
+{% if profile %}
+
+<h1> {{ user.username }} Profile!! </h1>
+<br/><br/>
+<h3> Follows </h3>
+
+
+
+<br/><br/>
+<h3> Followed By </h3>
+
+
+{% endif%}
+{% endblock content %}
