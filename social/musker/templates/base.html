@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  {% load static %}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -47,6 +48,19 @@
           </div>
         </div>
       </nav>
+
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong> {{ message }} </strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <div class="contailer-fluid">
+            <img src="{% static 'images/Mortal.jpg' %}" class="img-fluid rounded-start" alt="...">
+          </div>
+        </div>
+        
+      {% endfor %}
+      {% endif %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
