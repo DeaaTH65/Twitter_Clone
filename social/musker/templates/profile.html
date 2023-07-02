@@ -11,7 +11,14 @@
 <br/><br/>
 <div class="row">
     <div class="col-9">
-
+        {% for meep in meeps %}
+            <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-header"> {{ meep.user }} - {{ meep.created_at }} </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ meep.body }} </h5> 
+                </div>
+            </div><br/>
+        {% endfor %}
 
 
 
