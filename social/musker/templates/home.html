@@ -2,7 +2,15 @@
 
 {% block content %}
 <h1> Hello Musker!! </h1>
-
+<br/><br/>
+{% for meep in meeps %}
+    <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+        <div class="card-header"> {{ meep.user }} - {{ meep.created_at }} </div>
+        <div class="card-body">
+        <h5 class="card-title"> {{ meep.body }} </h5> 
+        </div>
+    </div> <hr/><br/>
+{% endfor %}
 
 {% endblock content %}
 

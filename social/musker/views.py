@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import Profile
+from .models import Profile, Meep
 from django.contrib import messages
 
 
 
 def home(request):
-    return render(request, 'home.html')
+    if request.user.is_authenticated:
+        meeps = Meep.objects.all().order_by("-created_at")
+        
+    return render(request, 'home.html', {'meeps': meeps})
 
 
 def profile_list(request):
