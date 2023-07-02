@@ -1,14 +1,26 @@
 from django.shortcuts import render, redirect
 from .models import Profile, Meep
 from django.contrib import messages
+from .forms import MeepForm
 
 
 
 def home(request):
     if request.user.is_authenticated:
+        form = MeepForm(request.POST or None)
+        if request.method == "POST":
+            if form.is_valid():
+                meep = form.save(commit=False)
+                meep.user = request.user
+                meep.save()
+                messages.success(request, ("Your meep has been Posted!"))
+                return redirect('home')
+            
         meeps = Meep.objects.all().order_by("-created_at")
-        
-    return render(request, 'home.html', {'meeps': meeps})
+        return render(request, 'home.html', {'meeps': meeps, 'form': form})
+    else:
+        meeps = Meep.objects.all().order_by("-created_at")
+        return render(request, 'home.html', {'meeps': meeps})
 
 
 def profile_list(request):
