@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Profile, Meep
 from django.contrib import messages
-from .forms import MeepForm, SignUpForm
+from .forms import MeepForm, SignUpForm, ProfilePicForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django import forms
@@ -87,7 +87,7 @@ def register_user(request):
             #first_name = form.cleaned_data['first_name']
             #last_name = form.cleaned_data['last_name']
             #email = form.cleaned_data['email']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, ("You have been registered successfully!"))
             return redirect('home')
@@ -100,16 +100,16 @@ def update_user(request):
 		profile_user = Profile.objects.get(user__id=request.user.id)
 		# Get Forms
 		user_form = SignUpForm(request.POST or None, request.FILES or None, instance=current_user)
-		#profile_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=profile_user)
+		profile_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=profile_user)
 		if user_form.is_valid():
 			user_form.save()
-			#profile_form.save()
+			profile_form.save()
 
 			login(request, current_user)
 			messages.success(request, ("Your Profile Has Been Updated!"))
 			return redirect('home')
 
-		return render(request, "update_user.html", {'user_form':user_form})
+		return render(request, "update_user.html", {'user_form':user_form, 'profile_form': profile_form})
 	else:
 		messages.success(request, ("You Must Be Logged In To View That Page..."))
 		return redirect('home')
