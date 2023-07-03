@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} | Update User {% endblock title %}
+
+
+{% block content %}
+{% if user.is_authenticated %}    
+    <div class="col-md-6 offset-md-3"> 
+    <h1> User Update Page </h1>
+    <br/><br/>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <br/>
+        <button type="submit" class="btn btn-info">Update</button>
+    </form>
+    </div>
+
+{% else %}
+    <h1>You need to be logged in..</h1>
+{% endif %}
+{% endblock content %}
