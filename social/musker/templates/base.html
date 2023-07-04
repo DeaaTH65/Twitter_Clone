@@ -23,24 +23,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
               {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile_list' %}">Profile Lists</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' request.user.id %}" tabindex="-1" aria-disabled="true">My Profile</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}" tabindex="-1" aria-disabled="true">Logout</a>
@@ -52,12 +37,20 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'register' %}" tabindex="-1" aria-disabled="true">Register</a>
                 </li>
-              {% endif %}
+              {% endif %}            
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+            {% if user.is_authenticated %}
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-link navbar-brand">
+                  {% if profile.profile_img %}
+                    <a href="{% url 'profile' request.user.id %}"> <img src="{{ user.profile.profile_img.url }}" class="rounded-circle" width=50 height=40> </a>
+                  {% else %}
+                    <a href="{% url 'profile' request.user.id %}"> <img src="{% static 'images/default_profile_pic.png' %}" class="rounded-circle" width=50 height=40> </a>
+                  {% endif %}
+                </li>
+              </ul>
+            {% endif %}
           </div>
         </div>
       </nav>
