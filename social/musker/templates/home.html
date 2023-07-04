@@ -22,7 +22,7 @@
                     {{ meep.user }} - {{ meep.created_at }} 
                 </div>
                 <div class="col-2">
-                    {{ meep.number_of_likes }} - Likes <br/>
+                    <small>{{ meep.number_of_likes }} - Likes </small><br/>
                     {% if user in meep.likes.all %}
                         <a href="{% url 'meep_like' meep.id %}"><button class="btn btn-danger">Unlike</button></a>
                     {% else %}

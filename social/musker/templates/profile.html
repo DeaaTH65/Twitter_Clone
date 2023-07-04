@@ -13,7 +13,24 @@
     <div class="col-9">
         {% for meep in meeps %}
             <div class="card text-white bg-secondary mb-3" style="max-width: 40rem;">
-                <div class="card-header"> {{ meep.user }} - {{ meep.created_at }} </div>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-3">
+                        </div>
+                    <div class="col-6">
+                        {{ meep.user }} - {{ meep.created_at }} 
+                    </div>
+                    <div class="col-3">
+                        <small>{{ meep.number_of_likes }} - Likes </small>
+                        {% if user in meep.likes.all %}
+                            <a href="{% url 'meep_like' meep.id %}"><button class="btn btn-danger">Unlike</button></a>
+                        {% else %}
+                            <a href="{% url 'meep_like' meep.id %}"><button class="btn btn-danger">Like</button></a>
+                        {% endif %}
+                    </div>
+                    </div> 
+                </div>
+                
                 <div class="card-body">
                     <h5 class="card-title"> {{ meep.body }} </h5> 
                 </div>
