@@ -3,11 +3,10 @@
 
 {% block content %}
 <div class="container text-center">
-<h1> Hello Musker!! </h1>
-<br/><br/>
-<div class="row">
-<div class="col-8">
-{% for meep in meeps %}
+    <h1> Meep!! </h1>
+    <br/><br/>
+
+
     <div class="card text-white bg-secondary mb-3" style="max-width: 40rem;">
         <div class="card-header">
             <div class="row">
@@ -38,25 +37,15 @@
                 <div class="col-8">
                     <h5 class="card-title"> {{ meep.body }} </h5>
                 </div>            
-                <div class="col-2">
-                    <a href="{% url 'meep_show' meep.id %}"> <i class="fa-solid fa-share" style="color:blue"></i> </a>              
+                <div class="col-2">             
                 </div>
             </div>
         </div>
     </div> <br/>
-{% endfor %}
+
 </div>
 
-<div class="col-4">
-    {% if form %}
-    <form method=POST>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    {% endif %}
-</div>
-</div>
-</div>
+
+
 {% endblock content %}
 
