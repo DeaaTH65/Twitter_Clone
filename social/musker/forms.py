@@ -8,10 +8,16 @@ from django.contrib.auth.models import User
 # Profile Extras Form
 class ProfilePicForm(forms.ModelForm):
 	profile_image = forms.ImageField(label="Profile Picture")
+	profile_bio = forms.CharField(label="Profile Bio", widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Profile Bio'}))
+	facebook_link = forms.CharField(label="Facebook", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Facebook Link'}))
+	instagram_link = forms.CharField(label="Instagram", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Instagram Link'}))
+	twitter_link = forms.CharField(label="Twitter", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Twitter Link'}))
+	reddit_link = forms.CharField(label="Reddit", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Reddit Link'}))
+	
 	
 	class Meta:
 		model = Profile
-		fields = ('profile_image', )
+		fields = ('profile_image', 'profile_bio', 'facebook_link', 'instagram_link', 'twitter_link', 'reddit_link')
 
 
 class MeepForm(forms.ModelForm):

@@ -10,6 +10,11 @@ class Profile(models.Model):
     follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
     date_modified = models.DateTimeField(User, auto_now=True)
     profile_img = models.ImageField(null=True, blank=True, upload_to='image/')
+    profile_bio = models.CharField(null=True, blank=True, max_length=200)
+    facebook_link = models.CharField(max_length=100, null=True, blank=True)
+    instagram_link = models.CharField(max_length=100, null=True, blank=True)
+    twitter_link = models.CharField(max_length=100, null=True, blank=True)
+    reddit_link = models.CharField(max_length=100, null=True, blank=True)
     
     def __str__(self):
         return self.user.username

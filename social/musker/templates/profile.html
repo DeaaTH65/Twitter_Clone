@@ -52,12 +52,31 @@
 
     <div class="col-3">
         {% if profile.profile_img %}
-            <div class="card" style="width: 12rem;">
+            <div class="container">
+            <div class="card" style="width: 15rem;">
                 <img src="{{ profile.profile_img.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Profile Picture</h5>
-                </div>
             </div>
+            </div>
+        {% endif %}
+
+        {% if profile.profile_bio %}
+            {{ profile.profile_bio }}
+        {% endif %}
+        <br/>
+        {% if profile.facebook_link %}
+            <a href="{{ profile.facebook_link }}"> <i class="fa-brands fa-facebook" style="color: #165ad0;"></i> </a>
+        {% endif %}
+        &nbsp; &nbsp;
+        {% if profile.instagram_link %}
+            <a href="{{ profile.instagram_link }}"> <i class="fa-brands fa-instagram" style="color: #e3430d;"></i> </a>
+        {% endif %}
+        &nbsp; &nbsp;
+        {% if profile.twitter_link %}
+            <a href="{{ profile.twitter_link }}"> <i class="fa-brands fa-twitter" style="color: #005eff;"></i> </a>
+        {% endif %}
+        &nbsp; &nbsp;
+        {% if profile.reddit_link %}
+            <a href="{{ profile.reddit_link }}"> <i class="fa-brands fa-reddit" style="color: #ff4747;"></i> </a>
         {% endif %}
 
         <br/><br/>
