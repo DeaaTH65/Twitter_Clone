@@ -18,7 +18,17 @@
                     <img src="{% static 'images/default_profile_pic.png' %}" width=50 height=50 class="rounded-circle" alt="...">
                     {% endif %}
                 </div>
-                <div class="col-8"> {{ meep.user }} - {{ meep.created_at }} </div>
+                <div class="col-8">
+                    {{ meep.user }} - {{ meep.created_at }} 
+                </div>
+                <div class="col-2">
+                    {{ meep.number_of_likes }} - Likes <br/>
+                    {% if user in meep.likes.all %}
+                        <a href="{% url 'meep_like' meep.id %}"><button class="btn btn-danger">Unlike</button></a>
+                    {% else %}
+                        <a href="{% url 'meep_like' meep.id %}"><button class="btn btn-danger">Like</button></a>
+                    {% endif %}
+               </div>
             </div>
         </div>
         <div class="card-body">
