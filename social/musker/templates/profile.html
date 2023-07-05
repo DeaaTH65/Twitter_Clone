@@ -39,7 +39,10 @@
                             <h5 class="card-title"> {{ meep.body }} </h5>
                         </div>            
                         <div class="col-2">
-                            <a href="{% url 'meep_show' meep.id %}"> <i class="fa-solid fa-share" style="color:blue"></i> </a>              
+                            <a href="{% url 'meep_show' meep.id %}"> <i class="fa-solid fa-share" style="color:blue"></i> </a>&nbsp;
+                            {% if request.user.username == profile.user.username %}
+                            <a href="{% url 'delete_meep' meep.id %}"> <i class="fa-solid fa-trash" style="color: #161717;"></i> </a>   
+                            {% endif %}           
                         </div>
                     </div>
                 </div>

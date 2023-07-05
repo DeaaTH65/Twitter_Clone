@@ -185,3 +185,18 @@ def meep_show(request, pk):
     else:
         messages.success(request, ("You cannot view this meep..."))
         return redirect('home')
+    
+    
+def delete_meep(request, pk):
+    if request.user.is_authenticated: 
+        meep = get_object_or_404(Meep, id=pk)
+        if request.user.username == meep.user.username:
+            meep.delete()
+            messages.success(request, ("Meep Deleted"))
+            return redirect(request.META.get('HTTP_REFERER'))
+        else:
+            messages.success(request, ("This is not your meep."))
+            return redirect(request.META.get('home'))
+    else:
+        messages.success(request, ("You need to login first..."))
+        return redirect(request.META.get('HTTP_REFERER'))
