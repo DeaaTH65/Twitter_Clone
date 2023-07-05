@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 # Profile Extras Form
 class ProfilePicForm(forms.ModelForm):
-	profile_image = forms.ImageField(label="Profile Picture")
+	profile_img = forms.ImageField(label="Profile Picture")
 	profile_bio = forms.CharField(label="Profile Bio", widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Profile Bio'}))
 	facebook_link = forms.CharField(label="Facebook", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Facebook Link'}))
 	instagram_link = forms.CharField(label="Instagram", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Instagram Link'}))
@@ -17,7 +17,7 @@ class ProfilePicForm(forms.ModelForm):
 	
 	class Meta:
 		model = Profile
-		fields = ('profile_image', 'profile_bio', 'facebook_link', 'instagram_link', 'twitter_link', 'reddit_link')
+		fields = ('profile_img', 'profile_bio', 'facebook_link', 'instagram_link', 'twitter_link', 'reddit_link', )
 
 
 class MeepForm(forms.ModelForm):
@@ -36,7 +36,7 @@ class SignUpForm(UserCreationForm):
 
 	class Meta:
 		model = User
-		fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+		fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 	def __init__(self, *args, **kwargs):
 		super(SignUpForm, self).__init__(*args, **kwargs)

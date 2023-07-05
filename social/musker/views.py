@@ -62,7 +62,7 @@ def follow(request, pk):
 def profile(request, pk):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=pk)
-        meeps = Meep.objects.filter(user_id=pk)
+        meeps = Meep.objects.filter(user_id=pk).order_by("-created_at")
         # Form Logic
         if request.method == "POST":
             current_user_profile = request.user.profile
@@ -151,7 +151,7 @@ def update_user(request):
 		# Get Forms
 		user_form = SignUpForm(request.POST or None, request.FILES or None, instance=current_user)
 		profile_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=profile_user)
-		if user_form.is_valid():
+		if user_form.is_valid() and profile_form.is_valid():
 			user_form.save()
 			profile_form.save()
 

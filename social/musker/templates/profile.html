@@ -85,7 +85,7 @@
             <div class="card-header">
                 <h3> Follows </h3>
             </div>
-            {% for following in profile.follows.all %}
+            {% for following in profile.follows.all|slice:3 %}
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="{% url 'profile' following.user.id %}">@{{following}} </a>  &nbsp;&nbsp;<a href="{% url 'unfollow' following.user.id %}"><i class="fa-solid fa-user-xmark" style="color: #ff0a0a;"></i> <br/></a></li>
                 </ul>

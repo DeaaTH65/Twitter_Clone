@@ -43,7 +43,7 @@
             {% if user.is_authenticated %}
               <ul class="navbar-nav ml-auto">
                 <li class="nav-link navbar-brand">
-                  {% if profile.profile_img %}
+                  {% if user.profile.profile_img %}
                     <a href="{% url 'profile' request.user.id %}"> <img src="{{ user.profile.profile_img.url }}" class="rounded-circle" width=50 height=40> </a>
                   {% else %}
                     <a href="{% url 'profile' request.user.id %}"> <img src="{% static 'images/default_profile_pic.png' %}" class="rounded-circle" width=50 height=40> </a>
