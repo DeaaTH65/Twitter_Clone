@@ -39,18 +39,16 @@
                             <h5 class="card-title"> {{ meep.body }} </h5>
                         </div>            
                         <div class="col-2">
-                            <a href="{% url 'meep_show' meep.id %}"> <i class="fa-solid fa-share" style="color:blue"></i> </a>&nbsp;
+                            <a href="{% url 'meep_show' meep.id %}"><i class="fa-solid fa-share" style="color:blue"></i></a>&nbsp;
                             {% if request.user.username == profile.user.username %}
-                            <a href="{% url 'delete_meep' meep.id %}"> <i class="fa-solid fa-trash" style="color: #161717;"></i> </a>   
+                            <a href="{% url 'edit_meep' meep.id %}"><i class="fa-solid fa-user-pen" style="color: #13ecdd;"></i></a>&nbsp;
+                            <a href="{% url 'delete_meep' meep.id %}"> <i class="fa-solid fa-trash" style="color: #161717;"></i> </a> 
                             {% endif %}           
                         </div>
                     </div>
                 </div>
             </div><br/>
         {% endfor %}
-
-
-
     </div>
 
     <div class="col-3">
@@ -89,7 +87,7 @@
             </div>
             {% for following in profile.follows.all %}
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}"> @{{following}} </a>  &nbsp;<a href="{% url 'unfollow' following.user.id %}"> <i class="fa-solid fa-user-xmark" style="color: #ff0a0a;"></i> <br/></a></li>
+                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}">@{{following}} </a>  &nbsp;&nbsp;<a href="{% url 'unfollow' following.user.id %}"><i class="fa-solid fa-user-xmark" style="color: #ff0a0a;"></i> <br/></a></li>
                 </ul>
             {% endfor %}
             <a href="{% url 'follows' profile.user.id %}" class="btn btn-warning"> See all... </a>
@@ -102,7 +100,7 @@
             </div>
             {% for following in profile.followed_by.all|slice:3 %}
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}"> @{{following}} </a> &nbsp;
+                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}">@{{following}} </a> &nbsp;
                     {% if following in profile.follows.all %}
                         <a href="{% url 'unfollow' following.user.id %}"><i class="fa fa-user-minus" style="color:grey"></i></a>
                     {% else %}
