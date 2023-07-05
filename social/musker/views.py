@@ -33,7 +33,18 @@ def profile_list(request):
     else:
         messages.success(request, ("You must be logged in to view this page Mortal!!"))
         return redirect('home')
-    
+
+
+def unfollow(request, pk):
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id=pk)
+        request.user.profile.follows.remove(profile)
+        request.user.profile.save()
+        messages.success(request, (f"Unfollowed { profile.user.username }"))
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        messages.success(request, ("You should be logged in to unfollow!!"))
+        return redirect('login')    
     
 def profile(request, pk):
     if request.user.is_authenticated:

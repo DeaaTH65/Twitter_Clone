@@ -86,7 +86,7 @@
             </div>
             {% for following in profile.follows.all %}
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}"> @{{following}} <br/></a></li>
+                <li class="list-group-item"><a href="{% url 'profile' following.user.id %}"> @{{following}} <a href="{% url 'unfollow' following.user.id %}"> <i class="fa fa-undo" style="color:grey"></i> </a> <br/></a></li>
                 </ul>
             {% endfor %}
         </div>
