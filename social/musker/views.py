@@ -222,3 +222,15 @@ def edit_meep(request, pk):
     else:
         messages.success(request, ("You need to login first..."))
         return redirect(request, 'home')
+    
+    
+def search(request):
+	if request.method == "POST":
+		# Grab the form field input
+		search = request.POST['search']
+		# Search the database
+		searched = Meep.objects.filter(body__contains = search)
+
+		return render(request, 'search.html', {'search':search, 'searched':searched})
+	else:
+		return render(request, 'search.html', {})
