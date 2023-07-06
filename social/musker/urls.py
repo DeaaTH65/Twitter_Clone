@@ -20,4 +20,5 @@ urlpatterns = [
     path('delete_meep/<int:pk>', views.delete_meep, name='delete_meep'),
     path('edit_meep/<int:pk>', views.edit_meep, name='edit_meep'),
     path('search/', views.search, name='search'),
+    path('search_users/', views.search_users, name='search_users'),
 ]

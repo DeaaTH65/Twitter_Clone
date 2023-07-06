@@ -234,3 +234,16 @@ def search(request):
 		return render(request, 'search.html', {'search':search, 'searched':searched})
 	else:
 		return render(request, 'search.html', {})
+
+
+def search_users(request):
+	if request.method == "POST":
+		# Grab the form field input
+		search = request.POST['search']
+		# Search the database
+		searched = Profile.objects.filter(user__username = search)
+
+		return render(request, 'search_users.html', {'search':search, 'searched':searched})
+	else:
+		return render(request, 'search_users.html', {})
+        

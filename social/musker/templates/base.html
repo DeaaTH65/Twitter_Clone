@@ -37,11 +37,16 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'register' %}" tabindex="-1" aria-disabled="true">Register</a>
                 </li>
-              {% endif %}      
-              <li class="nav-item">
-                <a class="nav-link" 
-                href="{% url 'search' %}">Search</a>
-              </li>      
+              {% endif %}     
+               
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Search <i class="fa-solid fa-magnifying-glass" style="color: #4603e2;"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="{% url 'search_users' %}">Search Users </a></li>
+                  <li><a class="dropdown-item" href="{% url 'search' %}">Search Meeps</a></li>
+                </ul>  
             </ul>
 
             {% if user.is_authenticated %}
