@@ -241,7 +241,7 @@ def search_users(request):
 		# Grab the form field input
 		search = request.POST['search']
 		# Search the database
-		searched = Profile.objects.filter(user__username = search)
+		searched = User.objects.filter(username__contains = search)
 
 		return render(request, 'search_users.html', {'search':search, 'searched':searched})
 	else:
