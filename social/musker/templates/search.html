@@ -25,12 +25,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-1">
-		  {% if meep.user.profile.profile_image %}
-				<img src="{{ meep.user.profile.profile_image.url }}" width=50 height=50 class="rounded-circle" alt="{{ profile.user.username }}">
-
-				{% else %}
+		  	{% if meep.user.profile.profile_img %}
+				<img src="{{ meep.user.profile.profile_img.url }}" width=50 height=50 class="rounded-circle" alt="{{ profile.user.username }}">
+			{% else %}
 				<img src="{% static 'images/default_profile_pic.png' %}" width=50 height=50 class="rounded-circle" alt="{{ profile.user.username }}">	
-				{% endif %}
+			{% endif %}
 		</div>
 
 		<div class="col-11">

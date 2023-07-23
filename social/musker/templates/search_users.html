@@ -47,8 +47,12 @@
     {% endfor %}
 
 {% else %}
-
-Username doesn't exist. Please try again.
+    {% if searched == None %}
+    
+    {% else %}
+    <strong> Username doesn't exist. Please try again. </strong>
+    {% endif %}
+    
 
 {% endif %}
 

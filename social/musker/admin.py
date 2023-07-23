@@ -22,5 +22,3 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Meep)
 #admin.site.register(Profile)
-
-
